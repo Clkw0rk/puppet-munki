@@ -101,6 +101,11 @@ class munki::install_components {
     http_password => $munki::http_password
   }
 
+  if versioncmp($munkitools_python_version, '3.8.0') > 0 {
+    $python_installs = ['/usr/local/munki/Python.framework', '/usr/local/munki/munki-python']
+  } else {
+    $python_installs = ['/usr/local/munki/Python.framework', '/usr/local/munki/python']
+  }
   if $munki::munki_python {
     apple_package { 'munkitools_python':
       source        => $actual_munkitools_python_source,
