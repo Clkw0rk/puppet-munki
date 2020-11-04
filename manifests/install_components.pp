@@ -111,7 +111,7 @@ class munki::install_components {
       source        => $actual_munkitools_python_source,
       version       => $munkitools_python_version,
       receipt       => $munki::munkitools_python_receipt,
-      installs      => ['/usr/local/munki/Python.framework', '/usr/local/munki/python'],
+      installs      => $python_installs,
       force_install => $force_install,
       http_checksum => $munki::munkitools_python_checksum,
       http_username => $munki::http_user,
